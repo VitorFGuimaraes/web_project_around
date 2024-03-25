@@ -1,0 +1,199 @@
+.main {
+  margin: 0 auto;
+}
+
+.profile {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin: 40px auto 50px;
+  max-width: 880px;
+  color: white;
+}
+
+.profile__image-perfil {
+  width: 168.75px;
+  height: 127.5px;
+  border-radius: 50%;
+}
+
+.profile__wrapper-texts {
+  margin-left: 30px;
+  margin-right: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile__wrapper-name-and-edit-button {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile__name {
+  color: white;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  margin: 0;
+  margin-bottom: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.profile__role {
+  color: white;
+  margin: 0;
+}
+
+.profile__edit-button {
+  background-color: black;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.profile__image-button {
+  height: 10px;
+  width: 10px;
+  color: black;
+  background-color: black;
+}
+
+.profile__button-more {
+ background-color: black;
+ border: 1px solid white;
+ width: 150px;
+ height: 50px;
+}
+
+.profile__image-button_more {
+  height: 22px;
+  width: 22px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 17px;
+  width: 880px;
+  margin: 0 auto;
+}
+
+.gallery__card {
+  display: flex;
+  flex-direction: column;
+  width: 282px;
+}
+
+.gallery__delete-button {
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  background-color: transparent;
+}
+
+.gallery__delete-image {
+  width: 21px;
+  height: 19px;
+}
+
+.gallery__card-image {
+  width: 282px;
+  height: 282px;
+  border-radius: 10px 10px 0 0;
+}
+
+.gallery__wrapper-text-and-like-button {
+  display: flex;
+  padding: 0 5px;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  color: black;
+  border-radius: 0 0 10px 10px;
+}
+
+.gallery__card_name {
+  font-size: 24px;
+  font-family: "Inter Black";
+  line-height: 29.05px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+
+.gallery__like-button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.gallery__like-image {
+  width: 21px;
+  height: 19px;
+}
+
+@media screen and (max-width: 720px) {
+  .profile {
+    padding: 42px 19px 36px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile__wrapper-name-and-edit-button {
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .profile__button-more {
+    width: 282px;
+    height: 50px;
+  }
+
+  .profile__name {
+    margin: 0 0 14px;
+    font-size: 22px;
+    line-height: 26.63px;
+  }
+
+  .profile__edit-button {
+    margin-bottom: 20px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .profile__image-button {
+    width: 7.5px;
+    height: 7.5px;
+  }
+
+  .profile__role {
+    margin-bottom: 36px;
+    font-size: 14px;
+    line-height: 16.94px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    width: 591px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+    width: 282px;
+  }
+}
