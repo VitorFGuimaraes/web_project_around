@@ -20,7 +20,6 @@
       <div class="profile__wrapper-texts">
         <div class="profile__wrapper-name-and-edit-button">
         <h2 class="profile__name">Vitor Ferreira Guimarães
-
         </h2>
         <button class="profile__edit-button">
           <img class="profile__image-button" src="images/images.png" alt="imagem do icone de editar">
@@ -43,7 +42,6 @@
           <p class="gallery__card_name">Serra da Estrela - Portugal
           </p>
           <button class="gallery__like-button">
-            <img class="gallery__like-image" src="images/like.svg" alt="foto de um coração para curtir">
           </button>
         </div>
       </div>
@@ -56,7 +54,6 @@
             <p class="gallery__card_name">Gerês - PT
             </p>
             <button class="gallery__like-button">
-              <img class="gallery__like-image" src="images/like.svg" alt="foto de um coração para curtir">
             </button>
           </div>
       </div>
@@ -69,7 +66,6 @@
           <p class="gallery__card_name">Nazaré - PT
           </p>
           <button class="gallery__like-button">
-            <img class="gallery__like-image" src="images/like.svg" alt="foto de um coração para curtir">
           </button>
         </div>
       </div>
@@ -82,7 +78,6 @@
           <p class="gallery__card_name">Santos - SP
           </p>
           <button class="gallery__like-button">
-            <img class="gallery__like-image" src="images/like.svg" alt="foto de um coração para curtir">
           </button>
         </div>
       </div>
@@ -95,7 +90,6 @@
           <p class="gallery__card_name">Porto - PT
           </p>
           <button class="gallery__like-button">
-            <img class="gallery__like-image" src="images/like.svg" alt="foto de um coração para curtir">
           </button>
         </div>
       </div>
@@ -108,7 +102,6 @@
           <p class="gallery__card_name">Gaia- PT
           </p>
           <button class="gallery__like-button">
-            <img class="gallery__like-image" src="images/like.svg" alt="foto de um coração para curtir">
           </button>
         </div>
       </div>
@@ -117,7 +110,44 @@
   <footer class="footer">
     <p class="footer__copyright">&copy;2024 Around The World.</p>
   </footer>
-
+  <div class="popup">
+    <div class="popup__container">
+      <img class="popup__close-button" src="images/close-icon.png" alt="X aonde se fecha a imagem">
+      <h2 class="popup__title">
+        Editar perfil
+      </h2>
+      <form class="popup__form">
+        <input type="text" id="input-name" class="popup__input" placeholder="Nome" value="Vitor Ferreira Guimarães">
+        <span class="popup__form-error" id="input-name-error"></span>
+        <input type="text" id="input-role" class="popup__input" placeholder="O que eu sou" value="Explorador">
+        <span class="popup__form-error" id="input-role-error"></span>
+        <button class="popup__save-button" id="save-button" type="submit">Salvar</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup-add-card">
+    <div class="popup__container">
+      <img class="popup__close-button popup-add-card__close-button" src="images/close-icon.png" alt="X aonde se fecha a imagem">
+      <h2 class="popup__title">Novo local</h2>
+      <form class="popup__form popup-add-card-form">
+        <input class="popup__input" id="input-location-name" placeholder="Titulo" type="text">
+        <span class="popup__form-error" id="input-location-name-error"></span>
+        <input class="popup__input" id="input-image" placeholder="Link da imagem" type="text">
+        <span class="popup__form-error popup-add-card-error" id="input-image-error"></span>
+        <button class="popup__save-button popup-add-card__create-button" id="save-image">Criar</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup-view-image">
+    <div class="popup__container popup-view-image__image-container">
+      <img class="popup__close-button popup-view-image__close-button" src="images/close-icon.png" alt="X aonde se fecha a imagem">
+    </div>
+    <div class="popup-view-image__image-container">
+      <img class="popup-view-image__image-container" src="#" alt="#">
+      <span class="popup-view-image__image-title"></span>
+    </div>
+  </div>
 </div>
+  <script src="../Projeto5/script/script.js"></script>
 </body>
 </html>
