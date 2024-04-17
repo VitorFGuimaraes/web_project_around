@@ -2,6 +2,7 @@ let editButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelectorAll('.popup__close-button');
 let saveImage = document.querySelector('#save-image');
 let buttonMore = document.querySelector('.profile__button-more');
+let galleryCard = document.querySelector(".gallery");
 
 function openPopUp() {
   let popUp = document.querySelector('.popup');
@@ -23,6 +24,15 @@ function closeMore() {
   popUp.classList.remove('popup_opened');
 }
 
+function liked(event) {
+  if (event.target.classList.contains("gallery__like-image_black")) {
+    event.target.classList.remove("gallery__like-image_black");
+  } else {
+    event.target.classList.add("gallery__like-image_black");;
+  };
+  console.log("deu");
+}
+
 buttonMore.addEventListener('click', openMore);
 editButton.addEventListener('click', openPopUp);
 closeButton[0].addEventListener('click', closePopUp);
@@ -42,3 +52,75 @@ function handleProfileFormSubmit(evt) {
 }
 
 formElement.addEventListener('submit', handleProfileFormSubmit);
+
+const initialCards = [
+  {
+    name: "Serra da Estrela - PT",
+    link: "https://i.imgur.com/YJvteSM.jpeg"
+  },
+  {
+    name: "Gerês - PT",
+    link: "https://i.imgur.com/1huc6VS.jpeg"
+  },
+  {
+    name: "Nazaré - PT",
+    link: "https://i.imgur.com/EqPXb0c.jpeg"
+  },
+  {
+    name: "Santos - SP",
+    link: "https://i.imgur.com/0BzLXif.jpeg"
+  },
+  {
+    name: "Porto - PT",
+    link: "https://i.imgur.com/wfVO5Pa.jpeg"
+  },
+  {
+    name: "Gaia - PT",
+    link: "https://i.imgur.com/UCLX3G4.jpeg"
+  }
+];
+
+function createTagWithClass(tag, className,) {
+  const element = document.createElement(tag);
+  element.classList.add(className);
+  return element;
+}
+
+function deleteCard(event) {
+  event.target.parentNode.parentNode.remove();
+};
+
+function makeCards() {
+  initialCards.forEach((element) => {
+    const initialCard = createTagWithClass('div', "gallery__card");
+    galleryCard.appendChild(initialCard);
+
+    const deleteButton = createTagWithClass('button', "gallery__delete-button");
+    initialCard.appendChild(deleteButton);
+    deleteButton.addEventListener("click", deleteCard);
+
+    const deleteImageButton = createTagWithClass('img', "gallery__delete-image");
+    deleteImageButton.setAttribute("src", "./images/delete-button.svg");
+    deleteButton.appendChild(deleteImageButton);
+
+
+    const imageGallery = createTagWithClass('img', 'gallery__card-image');
+    imageGallery.setAttribute("src", element.link);
+    initialCard.appendChild(imageGallery);
+    imageGallery.setAttribute("alt", element.name);
+
+    const wrapperNameMoreButton = createTagWithClass('div', 'gallery__wrapper-text-and-like-button');
+    initialCard.appendChild(wrapperNameMoreButton);
+
+    const imageName = createTagWithClass('p', 'gallery__card-name');
+    wrapperNameMoreButton.appendChild(imageName);
+    imageName.innerText = element.name;
+
+    const likeButton = createTagWithClass('button', 'gallery__like-button');
+    wrapperNameMoreButton.appendChild(likeButton);
+    likeButton.addEventListener("click", liked);
+  });
+};
+
+makeCards();
+

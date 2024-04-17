@@ -92,9 +92,9 @@
 .gallery__delete-button {
   border: none;
   cursor: pointer;
-  position: absolute;
-  top: 18px;
-  right: 15px;
+  position: relative;
+  top: 30px;
+  left: 120px;
   background-color: transparent;
 }
 
@@ -148,6 +148,15 @@
 
 
 .gallery__like-image_black {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-image: url(../images/Union.png);
+  width: 21px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: auto;
 }
 
 
