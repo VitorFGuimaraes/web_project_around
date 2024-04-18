@@ -3,6 +3,8 @@ let closeButton = document.querySelectorAll('.popup__close-button');
 let saveImage = document.querySelector('#save-image');
 let buttonMore = document.querySelector('.profile__button-more');
 let galleryCard = document.querySelector(".gallery");
+let createCard = document.querySelector("#save-image");
+let popUpCloseButton = document.querySelector(".popup-view-image__close-button")
 
 function openPopUp() {
   let popUp = document.querySelector('.popup');
@@ -24,6 +26,17 @@ function closeMore() {
   popUp.classList.remove('popup_opened');
 }
 
+function openExpandedImage() {
+  let popUp = document.querySelectorAll('.popup')[2];
+  popUp.classList.add('popup_opened');
+}
+
+function closeExpandedImage() {
+  let popUp = document.querySelectorAll('.popup')[2];
+  popUp.classList.remove('popup_opened');
+}
+
+
 function liked(event) {
   if (event.target.classList.contains("gallery__like-image_black")) {
     event.target.classList.remove("gallery__like-image_black");
@@ -33,10 +46,12 @@ function liked(event) {
   console.log("deu");
 }
 
+
 buttonMore.addEventListener('click', openMore);
 editButton.addEventListener('click', openPopUp);
 closeButton[0].addEventListener('click', closePopUp);
 closeButton[1].addEventListener('click', closeMore);
+popUpCloseButton.addEventListener('click', popUpCloseButton);
 
 let formElement = document.querySelector('.popup__form');
 
@@ -90,37 +105,64 @@ function deleteCard(event) {
   event.target.parentNode.parentNode.remove();
 };
 
+function popupImage(event) {
+  const expandedImage = document.querySelector('.popup-view-image__render-image');
+  expandedImage.setAttribute('src', event.target.getAttribute('src'));
+  expandedImage.setAttribute('alt', event.target.getAttribute('alt'));
+  openExpandedImage();
+}
+
+function renderCard(name, link) {
+  const initialCard = createTagWithClass('div', "gallery__card");
+  galleryCard.appendChild(initialCard);
+
+  const deleteButton = createTagWithClass('button', "gallery__delete-button");
+  initialCard.appendChild(deleteButton);
+  deleteButton.addEventListener("click", deleteCard);
+
+  const deleteImageButton = createTagWithClass('img', "gallery__delete-image");
+  deleteImageButton.setAttribute("src", "./images/delete-button.svg");
+  deleteButton.appendChild(deleteImageButton);
+
+  const imageGallery = createTagWithClass('img', 'gallery__card-image');
+  imageGallery.addEventListener('click', popupImage);
+  imageGallery.setAttribute("src", link);
+  initialCard.appendChild(imageGallery);
+  imageGallery.setAttribute("alt", name);
+
+
+  const wrapperNameMoreButton = createTagWithClass('div', 'gallery__wrapper-text-and-like-button');
+  initialCard.appendChild(wrapperNameMoreButton);
+
+  const imageName = createTagWithClass('p', 'gallery__card-name');
+  wrapperNameMoreButton.appendChild(imageName);
+  imageName.innerText = name;
+
+  const likeButton = createTagWithClass('button', 'gallery__like-button');
+  wrapperNameMoreButton.appendChild(likeButton);
+  likeButton.addEventListener("click", liked);
+
+}
+
 function makeCards() {
   initialCards.forEach((element) => {
-    const initialCard = createTagWithClass('div', "gallery__card");
-    galleryCard.appendChild(initialCard);
-
-    const deleteButton = createTagWithClass('button', "gallery__delete-button");
-    initialCard.appendChild(deleteButton);
-    deleteButton.addEventListener("click", deleteCard);
-
-    const deleteImageButton = createTagWithClass('img', "gallery__delete-image");
-    deleteImageButton.setAttribute("src", "./images/delete-button.svg");
-    deleteButton.appendChild(deleteImageButton);
-
-
-    const imageGallery = createTagWithClass('img', 'gallery__card-image');
-    imageGallery.setAttribute("src", element.link);
-    initialCard.appendChild(imageGallery);
-    imageGallery.setAttribute("alt", element.name);
-
-    const wrapperNameMoreButton = createTagWithClass('div', 'gallery__wrapper-text-and-like-button');
-    initialCard.appendChild(wrapperNameMoreButton);
-
-    const imageName = createTagWithClass('p', 'gallery__card-name');
-    wrapperNameMoreButton.appendChild(imageName);
-    imageName.innerText = element.name;
-
-    const likeButton = createTagWithClass('button', 'gallery__like-button');
-    wrapperNameMoreButton.appendChild(likeButton);
-    likeButton.addEventListener("click", liked);
+    renderCard(element.name, element.link);
   });
 };
 
 makeCards();
+
+const handleImageForm = document.querySelector(".popup-add-card-form");
+
+function newCard(event) {
+  console.log(event);
+  event.preventDefault();
+  const inputName = document.querySelector("#input-location-name");
+  const inputLink = document.querySelector("#input-image");
+  renderCard(inputName.value, inputLink.value);
+  closeMore();
+}
+
+handleImageForm.addEventListener("submit", newCard);
+popUpCloseButton.addEventListener('click', closeExpandedImage);
 

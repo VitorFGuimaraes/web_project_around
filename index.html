@@ -36,78 +36,6 @@
       </button>
     </section>
     <section class="gallery">
-      <div class="gallery__card">
-        <button class="gallery__delete-button">
-          <img class="gallery__delete-image" src="images/delete-button.svg" alt="imagem de uma lata de lixo para deletar">
-        </button>
-        <img class="gallery__card-image" src="images/Serra-da-Estrela.jpg" alt="imagem de um casal brincando na neve">
-        <div class="gallery__wrapper-text-and-like-button">
-          <p class="gallery__card-name">Serra da Estrela - Portugal
-          </p>
-          <button class="gallery__like-button">
-          </button>
-        </div>
-      </div>
-      <div class="gallery__card">
-          <button class="gallery__delete-button">
-            <img class="gallery__delete-image" src="images/delete-button.svg" alt="imagem de uma lata de lixo para deletar">
-          </button>
-          <img class="gallery__card-image" src="images/Gerês.jpg" alt="imagem de um homem na montanha">
-          <div class="gallery__wrapper-text-and-like-button">
-            <p class="gallery__card-name">Gerês - PT
-            </p>
-            <button class="gallery__like-button">
-            </button>
-          </div>
-      </div>
-      <div class="gallery__card">
-        <button class="gallery__delete-button">
-          <img class="gallery__delete-image" src="images/delete-button.svg" alt="imagem de uma lata de lixo para deletar">
-        </button>
-        <img class="gallery__card-image" src="images/Nazaré.jpg" alt="imagem de um casal na montanha da praia">
-        <div class="gallery__wrapper-text-and-like-button">
-          <p class="gallery__card-name">Nazaré - PT
-          </p>
-          <button class="gallery__like-button">
-          </button>
-        </div>
-      </div>
-      <div class="gallery__card">
-        <button class="gallery__delete-button">
-          <img class="gallery__delete-image" src="images/delete-button.svg" alt="imagem de uma lata de lixo para deletar">
-        </button>
-        <img class="gallery__card-image" src="images/Santos.jpg" alt="imagem de um homem na orla da praia">
-        <div class="gallery__wrapper-text-and-like-button">
-          <p class="gallery__card-name">Santos - SP
-          </p>
-          <button class="gallery__like-button">
-          </button>
-        </div>
-      </div>
-      <div class="gallery__card">
-        <button class="gallery__delete-button">
-          <img class="gallery__delete-image" src="images/delete-button.svg" alt="imagem de uma lata de lixo para deletar">
-        </button>
-        <img class="gallery__card-image" src="images/familia.jpg" alt="imagem de uma familia no barco">
-        <div class="gallery__wrapper-text-and-like-button">
-          <p class="gallery__card-name">Porto - PT
-          </p>
-          <button class="gallery__like-button">
-          </button>
-        </div>
-      </div>
-      <div class="gallery__card">
-        <button class="gallery__delete-button">
-          <img class="gallery__delete-image" src="images/delete-button.svg" alt="imagem de uma lata de lixo para deletar">
-        </button>
-        <img class="gallery__card-image" src="images/porto.jpg" alt="imagem de dois casal na frente de uma ponte">
-        <div class="gallery__wrapper-text-and-like-button">
-          <p class="gallery__card-name">Gaia- PT
-          </p>
-          <button class="gallery__like-button">
-          </button>
-        </div>
-      </div>
     </section>
   </main>
   <footer class="footer">
@@ -137,13 +65,14 @@
         <span class="popup__form-error" id="input-location-name-error"></span>
         <input class="popup__input" id="input-image" placeholder="Link da imagem" type="text">
         <span class="popup__form-error popup-add-card-error" id="input-image-error"></span>
-        <button class="popup__save-button popup-add-card__create-button" id="save-image">Criar</button>
+        <button class="popup__save-button popup-add-card__create-button" id="save-image" type="submit">Criar</button>
       </form>
     </div>
   </div>
   <div class="popup popup-view-image">
     <div class="popup__container popup-view-image__image-container">
       <img class="popup__close-button popup-view-image__close-button" src="images/close-icon.png" alt="aonde se fecha a imagem">
+      <img class="popup-view-image__render-image">
     </div>
   </div>
 </div>
