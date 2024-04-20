@@ -1,13 +1,13 @@
-let editButton = document.querySelector('.profile__edit-button');
-let closeButton = document.querySelectorAll('.popup__close-button');
-let saveImage = document.querySelector('#save-image');
-let buttonMore = document.querySelector('.profile__button-more');
-let galleryCard = document.querySelector(".gallery");
-let createCard = document.querySelector("#save-image");
-let popUpCloseButton = document.querySelector(".popup-view-image__close-button")
+const editButton = document.querySelector('.profile__edit-button');
+const closeButton = document.querySelectorAll('.popup__close-button');
+const saveImage = document.querySelector('#save-image');
+const buttonMore = document.querySelector('.profile__button-more');
+const galleryCard = document.querySelector(".gallery");
+const createCard = document.querySelector("#save-image");
+const popUpCloseButton = document.querySelector(".popup-view-image__close-button")
 
 function openPopUp() {
-  let popUp = document.querySelector('.popup');
+  const popUp = document.querySelector('.popup');
   popUp.classList.add('popup_opened');
 }
 
@@ -71,27 +71,27 @@ formElement.addEventListener('submit', handleProfileFormSubmit);
 const initialCards = [
   {
     name: "Serra da Estrela - PT",
-    link: "https://i.imgur.com/YJvteSM.jpeg"
+    link: "https://i.imgur.com/9UIIOkT.jpeg"
   },
   {
     name: "Gerês - PT",
-    link: "https://i.imgur.com/1huc6VS.jpeg"
+    link: "https://i.imgur.com/SpYcR5B.jpeg"
   },
   {
     name: "Nazaré - PT",
-    link: "https://i.imgur.com/EqPXb0c.jpeg"
+    link: "https://i.imgur.com/9QqRSM6.jpeg"
   },
   {
     name: "Santos - SP",
-    link: "https://i.imgur.com/0BzLXif.jpeg"
+    link: "https://i.imgur.com/zIsWudK.jpeg"
   },
   {
     name: "Porto - PT",
-    link: "https://i.imgur.com/wfVO5Pa.jpeg"
+    link: "https://i.imgur.com/JcrXLQ0.jpeg"
   },
   {
     name: "Gaia - PT",
-    link: "https://i.imgur.com/UCLX3G4.jpeg"
+    link: "https://i.imgur.com/ClOpZ8R.jpeg"
   }
 ];
 
@@ -155,7 +155,6 @@ makeCards();
 const handleImageForm = document.querySelector(".popup-add-card-form");
 
 function newCard(event) {
-  console.log(event);
   event.preventDefault();
   const inputName = document.querySelector("#input-location-name");
   const inputLink = document.querySelector("#input-image");

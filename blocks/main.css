@@ -9,12 +9,14 @@
   margin: 40px auto 50px;
   max-width: 880px;
   color: white;
+  justify-content: space-between;
 }
 
-.profile__image-perfil {
-  width: 168.75px;
-  height: 127.5px;
+.profile__image-profile {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .profile__wrapper-texts {
@@ -30,6 +32,7 @@
   gap: 18px;
   justify-content: flex-start;
   align-items: center;
+  max-width: 592px;
 }
 
 .profile__name {
@@ -43,6 +46,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  max-width: 490px;
 }
 
 .profile__role {
@@ -70,8 +74,8 @@
 .profile__button-more {
  background-color: black;
  border: 1px solid white;
- width: 150px;
- height: 50px;
+ min-width: 150px;
+ min-height: 50px;
 }
 
 .profile__button-more:hover {
