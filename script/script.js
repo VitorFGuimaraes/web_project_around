@@ -71,27 +71,27 @@ formElement.addEventListener('submit', handleProfileFormSubmit);
 const initialCards = [
   {
     name: "Serra da Estrela - PT",
-    link: "https://drive.google.com/file/d/140IUiV29wKQPLPzqos2gVK4O8ss96-Hs/view?usp=sharing"
+    link: "https://i.imgur.com/9UIIOkT.jpg"
   },
   {
     name: "Gerês - PT",
-    link: "https://drive.google.com/file/d/1WpJ2xCJTLE3TCYTgWMsu8iYySijRkTWG/view?usp=sharing"
+    link: "https://i.imgur.com/SpYcR5B.jpg"
   },
   {
     name: "Nazaré - PT",
-    link: "https://drive.google.com/file/d/1L0A3EQXjb8dc5yLIUvjKkwia16KFS7pb/view?usp=sharing"
+    link: "https://i.imgur.com/9QqRSM6.jpg"
   },
   {
     name: "Santos - SP",
-    link: "https://drive.google.com/file/d/1OLVYbq7pyltBbuxN2bYHxWxAP3DvTqUQ/view?usp=sharing"
+    link: "https://i.imgur.com/zIsWudK.jpg"
   },
   {
     name: "Porto - PT",
-    link: "https://drive.google.com/file/d/1wQhIsdLkfZh5GQcbjtdccd1pHpKQ7kgV/view?usp=sharing"
+    link: "https://i.imgur.com/ClOpZ8R.jpg"
   },
   {
     name: "Gaia - PT",
-    link: "https://drive.google.com/file/d/1DirYC_ohvEelpBD2vFPFxRlNyvn1jL_k/view?usp=sharing"
+    link: "https://i.imgur.com/JcrXLQ0.jpg"
   }
 ];
 
