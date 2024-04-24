@@ -71,8 +71,7 @@ formElement.addEventListener('submit', handleProfileFormSubmit);
 const initialCards = [
   {
     name: "Serra da Estrela - PT",
-    link: "https://imgur.com/9UIIOkT"
-
+    link: "https://i.imgur.com/9UIIOkT.jpg"
   },
   {
     name: "Gerês - PT",
@@ -122,7 +121,6 @@ function renderCard(name, link) {
   deleteButton.addEventListener("click", deleteCard);
 
   const deleteImageButton = createTagWithClass('img', "gallery__delete-image");
-  deleteImageButton.setAttribute("src", "../images/trash.svg");
   deleteButton.appendChild(deleteImageButton);
 
   const imageGallery = createTagWithClass('img', 'gallery__card-image');

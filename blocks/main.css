@@ -116,6 +116,10 @@
 .gallery__delete-image {
   width: 21px;
   height: 19px;
+  background-image: url(../images/Trash.svg);
+  border: none;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .gallery__delete-image:hover {

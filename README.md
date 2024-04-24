@@ -10,4 +10,5 @@
 
 ## Github pages link:
 
-- [Link to site] https://github.com/VitorFGuimaraes/web_project_around
+- [Link to site] https://vitorfguimaraes.github.io/web_project_around/
+- [Link to Github] https://github.com/VitorFGuimaraes/web_project_around
