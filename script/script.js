@@ -164,3 +164,35 @@ function newCard(event) {
 handleImageForm.addEventListener("submit", newCard);
 popUpCloseButton.addEventListener('click', closeExpandedImage);
 
+
+function escapeClose(event) {
+  if (event.key === "Escape") {
+    closePopUp()
+    closeExpandedImage()
+    closeMore()
+  }
+};
+
+document.addEventListener("keydown", escapeClose);
+
+let popUp = document.querySelector('.popup');
+let addCard = document.querySelectorAll('.popup')[1];
+let expandedImage = document.querySelectorAll(".popup")[2];
+
+popUp.addEventListener("click", (event) => {
+if (event.target.classList.contains("popup")) {
+  popUp.classList.remove("popup_opened");
+}
+} );
+
+addCard.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup-add-card")) {
+    addCard.classList.remove("popup_opened");
+  }
+} );
+
+expandedImage.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup-view-image")) {
+    expandedImage.classList.remove("popup_opened");
+  }
+});
