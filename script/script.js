@@ -196,3 +196,56 @@ expandedImage.addEventListener("click", (event) => {
     expandedImage.classList.remove("popup_opened");
   }
 });
+
+const inputName = document.querySelector("#input-name");
+const inputRole = document.querySelector("#input-role");
+const formPerfil = document.querySelector(".popup__form");
+const errorName = document.querySelector("#input-name-error");
+const errorRole = document.querySelector("#input-role-error");
+const saveButton = document.querySelector("#save-button");
+const maxInputLength = 40;
+const minInputLength = 2;
+
+
+const validateInputName = () => {
+  if(!inputName.value) {
+    errorName.textContent = "Preencha esse campo."
+    saveButton.disabled = true;
+    inputName.classList.add("popup__form-error")
+  } else if(inputName.value.length < minInputLength) {
+    errorName.textContent = "O campo deve ter ao menos 2 caracteres."
+    inputName.classList.add("popup__form-error")
+    saveButton.disabled = true;
+  } else if(inputName.value.length > maxInputLength) {
+    errorName.textContent = "O campo deve ter entre 2 a 40 caracteres."
+    inputName.classList.add("popup__form-error")
+    saveButton.disabled = true;
+  } else
+  errorName.textContent = ""
+  saveButton.disabled = false;
+  inputName.classList.remove("popup__form-error")
+}
+
+const validateInputRole = () => {
+  if(!inputRole.value) {
+    errorRole.textContent = "Preencha esse campo."
+    saveButton.disabled = true;
+    inputRole.classList.add("popup__form-error")
+  } else if(inputRole.value.length < minInputLength) {
+    errorRole.textContent = "O campo deve ter ao menos 2 caracteres."
+    inputRole.classList.add("popup__form-error")
+    saveButton.disabled = true;
+  } else if(inputRole.value.length > maxInputLength) {
+    errorRole.textContent = "O campo deve ter entre 2 a 200 caracteres."
+    inputRole.classList.add("popup__form-error")
+    saveButton.disabled = true;
+  } else
+  errorRole.textContent = ""
+  saveButton.disabled = false;
+  inputRole.classList.remove("popup__form-error")
+}
+
+
+
+inputName.addEventListener("input", validateInputName);
+inputRole.addEventListener("input", validateInputRole);

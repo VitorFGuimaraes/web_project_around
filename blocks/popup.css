@@ -95,7 +95,7 @@
 }
 
 .popup__save-button:disabled {
-  background-color: #000000cc;
+  background-color: #cccccc;
 }
 
 .popup__save-button:hover {
