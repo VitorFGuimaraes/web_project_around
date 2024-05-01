@@ -9,6 +9,7 @@ const popUpCloseButton = document.querySelector(".popup-view-image__close-button
 function openPopUp() {
   const popUp = document.querySelector('.popup');
   popUp.classList.add('popup_opened');
+  handleButtonPerfil()
 }
 
 function closePopUp() {
@@ -19,6 +20,7 @@ function closePopUp() {
 function openMore() {
   let popUp = document.querySelectorAll('.popup')[1];
   popUp.classList.add('popup_opened');
+  handleButton()
 }
 
 function closeMore() {
@@ -203,49 +205,109 @@ const formPerfil = document.querySelector(".popup__form");
 const errorName = document.querySelector("#input-name-error");
 const errorRole = document.querySelector("#input-role-error");
 const saveButton = document.querySelector("#save-button");
-const maxInputLength = 40;
-const minInputLength = 2;
+let maxInputLength = 40;
+let minInputLength = 2;
 
 
-const validateInputName = () => {
+function validateInputName() {
   if(!inputName.value) {
     errorName.textContent = "Preencha esse campo."
-    saveButton.disabled = true;
     inputName.classList.add("popup__form-error")
   } else if(inputName.value.length < minInputLength) {
     errorName.textContent = "O campo deve ter ao menos 2 caracteres."
     inputName.classList.add("popup__form-error")
-    saveButton.disabled = true;
   } else if(inputName.value.length > maxInputLength) {
     errorName.textContent = "O campo deve ter entre 2 a 40 caracteres."
     inputName.classList.add("popup__form-error")
-    saveButton.disabled = true;
-  } else
-  errorName.textContent = ""
-  saveButton.disabled = false;
-  inputName.classList.remove("popup__form-error")
+  } else {
+    errorName.textContent = ""
+    inputName.classList.remove("popup__form-error")
+    return true;
+  }
 }
 
-const validateInputRole = () => {
-  if(!inputRole.value) {
+function validateInputRole() {
+  if(!inputRole.value || inputRole.value === "") {
     errorRole.textContent = "Preencha esse campo."
-    saveButton.disabled = true;
     inputRole.classList.add("popup__form-error")
   } else if(inputRole.value.length < minInputLength) {
     errorRole.textContent = "O campo deve ter ao menos 2 caracteres."
-    inputRole.classList.add("popup__form-error")
-    saveButton.disabled = true;
+    inputRole.classList.add("popup__form-error");
   } else if(inputRole.value.length > maxInputLength) {
     errorRole.textContent = "O campo deve ter entre 2 a 200 caracteres."
     inputRole.classList.add("popup__form-error")
-    saveButton.disabled = true;
-  } else
-  errorRole.textContent = ""
-  saveButton.disabled = false;
-  inputRole.classList.remove("popup__form-error")
+  } else {
+    errorRole.textContent = ""
+    inputRole.classList.remove("popup__form-error")
+    return true;
+  }
 }
 
+inputName.addEventListener("input", handleButtonPerfil);
+inputRole.addEventListener("input", handleButtonPerfil);
+
+const inputLocation = document.querySelector("#input-location-name");
+const inputLocationError = document.querySelector("#input-location-name-error");
+const inputImage = document.querySelector("#input-image");
+const inputImageError = document.querySelector("#input-image-error");
+const cardButton = document.querySelector("#save-image")
+
+const maxLocationLength = 30;
+const minLocationLength = 2;
+
+function validateLocation() {
+  if (!inputLocation.value) {
+    inputLocationError.textContent = "Preencha esse campo."
+    inputLocation.classList.add("input-location-name-error")
+  } else if(inputLocation.value.length < minLocationLength) {
+    inputLocationError.textContent = "O campo deve ter ao menos 2 caracteres."
+    inputLocation.classList.add("input-location-name-error")
+  } else if(inputLocation.value.length > maxLocationLength) {
+  inputLocationError.textContent = "O campo deve ter entre 2 a 30 caracteres."
+  inputLocation.classList.add("input-location-name-error")
+  } else {
+  inputLocationError.textContent = ""
+  inputLocation.classList.remove("input-location-name-error")
+  return true;
+  }
+}
+
+inputLocation.addEventListener("input", handleButton);
 
 
-inputName.addEventListener("input", validateInputName);
-inputRole.addEventListener("input", validateInputRole);
+function validateLink() {
+  if(!inputImage.value) {
+  inputImageError.textContent = "Preencha esse campo."
+  inputImageError.classList.add("popup-add-card-error")
+  } else if (!inputImage.value.startsWith("https://")) {
+  inputImageError.textContent = "Insira uma url valida"
+  inputImageError.classList.add("popup-add-card-error")
+  } else {
+  inputImageError.textContent = ""
+  inputImageError.classList.remove("popup-add-card-error")
+  return true
+  }
+}
+
+inputImage.addEventListener("input", handleButton);
+
+function handleButton() {
+  const link = validateLink();
+  const location = validateLocation();
+  if (link && location) {
+    cardButton.disabled = false;
+  } else {
+    cardButton.disabled = true;
+  }
+}
+
+function handleButtonPerfil() {
+  const name = validateInputName();
+  const role = validateInputRole();
+  console.log(name, role);
+  if (name && role) {
+    saveButton.disabled = false;
+  } else {
+    saveButton.disabled = true;
+  }
+}
