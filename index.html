@@ -47,10 +47,10 @@
       <h2 class="popup__title">
         Editar perfil
       </h2>
-      <form class="popup__form" novalidate>
-        <input type="text" id="input-name" class="popup__input" placeholder="Nome" value="Vitor Ferreira Guimarães" min="1" max="40">
+      <form class="popup__form">
+        <input type="text" id="input-name" class="popup__input" placeholder="Nome" value="Vitor Ferreira Guimarães" minlength="2" maxlength="40" required>
         <span class="popup__form-error" id="input-name-error"></span>
-        <input type="text" id="input-role" class="popup__input" placeholder="O que eu sou" value="Explorador">
+        <input type="text" id="input-role" class="popup__input" placeholder="O que eu sou" value="Explorador" minlength="2" maxlength="200" required>
         <span class="popup__form-error" id="input-role-error"></span>
         <button class="popup__save-button" id="save-button" type="submit">Salvar</button>
       </form>
@@ -60,10 +60,10 @@
     <div class="popup__container">
       <img class="popup__close-button popup-add-card__close-button" src="images/close-icon.png" alt="aonde se fecha a imagem">
       <h2 class="popup__title">Novo local</h2>
-      <form class="popup__form popup-add-card-form" novalidate>
-        <input class="popup__input" id="input-location-name" placeholder="Titulo" type="text">
+      <form class="popup__form popup-add-card-form">
+        <input class="popup__input" id="input-location-name" placeholder="Titulo" type="text" minlength="2" maxlength="30" required>
         <span class="popup__form-error" id="input-location-name-error"></span>
-        <input class="popup__input" id="input-image" placeholder="Link da imagem" type="url">
+        <input class="popup__input" id="input-image" placeholder="Link da imagem" type="url" required>
         <span class="popup__form-error popup-add-card-error" id="input-image-error"></span>
         <button class="popup__save-button popup-add-card__create-button" id="save-image" type="submit" disabled>Criar</button>
       </form>
