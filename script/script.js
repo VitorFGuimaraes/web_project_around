@@ -1,51 +1,21 @@
+import  Card  from "./card.js";
+import {
+  openPopUp,
+  closePopUp,
+  openMore,
+  closeMore,
+  openExpandedImage,
+  closeExpandedImage
+} from "./utils.js";
+
+import EnableValidation from "../script/enableValidation.js";
+
 const editButton = document.querySelector('.profile__edit-button');
 const closeButton = document.querySelectorAll('.popup__close-button');
-const saveImage = document.querySelector('#save-image');
 const buttonMore = document.querySelector('.profile__button-more');
 const galleryCard = document.querySelector(".gallery");
-const createCard = document.querySelector("#save-image");
 const popUpCloseButton = document.querySelector(".popup-view-image__close-button")
 
-function openPopUp() {
-  const popUp = document.querySelector('.popup');
-  popUp.classList.add('popup_opened');
-  handleButtonPerfil()
-}
-
-function closePopUp() {
-  const popUp = document.querySelector('.popup');
-  popUp.classList.remove('popup_opened');
-}
-
-function openMore() {
-  let popUp = document.querySelectorAll('.popup')[1];
-  popUp.classList.add('popup_opened');
-  handleButton()
-}
-
-function closeMore() {
-  let popUp = document.querySelectorAll('.popup')[1];
-  popUp.classList.remove('popup_opened');
-}
-
-function openExpandedImage() {
-  let popUp = document.querySelectorAll('.popup')[2];
-  popUp.classList.add('popup_opened');
-}
-
-function closeExpandedImage() {
-  let popUp = document.querySelectorAll('.popup')[2];
-  popUp.classList.remove('popup_opened');
-}
-
-
-function liked(event) {
-  if (event.target.classList.contains("gallery__like-image_black")) {
-    event.target.classList.remove("gallery__like-image_black");
-  } else {
-    event.target.classList.add("gallery__like-image_black");;
-  };
-}
 
 
 buttonMore.addEventListener('click', openMore);
@@ -72,81 +42,44 @@ formElement.addEventListener('submit', handleProfileFormSubmit);
 const initialCards = [
   {
     name: "Serra da Estrela - PT",
-    link: "https://i.imgur.com/9UIIOkT.jpg"
+    link: "../images/Serra-da-Estrela.jpg"
   },
   {
     name: "Gerês - PT",
-    link: "https://i.imgur.com/SpYcR5B.jpg"
+    link: "../images/Gerês.jpg"
   },
   {
     name: "Nazaré - PT",
-    link: "https://i.imgur.com/9QqRSM6.jpg"
+    link: "../images/Nazaré.jpg"
   },
   {
     name: "Santos - SP",
-    link: "https://i.imgur.com/zIsWudK.jpg"
+    link: "../images/Santos.jpg"
   },
   {
     name: "Porto - PT",
-    link: "https://i.imgur.com/ClOpZ8R.jpg"
+    link: "../images/porto.jpg"
   },
   {
     name: "Gaia - PT",
-    link: "https://i.imgur.com/JcrXLQ0.jpg"
+    link: "../images/familia.jpg"
   }
 ];
 
-function createTagWithClass(tag, className,) {
-  const element = document.createElement(tag);
-  element.classList.add(className);
-  return element;
-}
 
-function deleteCard(event) {
-  event.target.parentNode.parentNode.remove();
-};
 
-function popupImage(event) {
+export function popupImage(event) {
   const expandedImage = document.querySelector('.popup-view-image__render-image');
   expandedImage.setAttribute('src', event.target.getAttribute('src'));
   expandedImage.setAttribute('alt', event.target.getAttribute('alt'));
   openExpandedImage();
 }
 
-function renderCard(name, link) {
-  const initialCard = createTagWithClass('div', "gallery__card");
-  galleryCard.appendChild(initialCard);
-
-  const deleteButton = createTagWithClass('button', "gallery__delete-button");
-  initialCard.appendChild(deleteButton);
-  deleteButton.addEventListener("click", deleteCard);
-
-  const deleteImageButton = createTagWithClass('img', "gallery__delete-image");
-  deleteButton.appendChild(deleteImageButton);
-
-  const imageGallery = createTagWithClass('img', 'gallery__card-image');
-  imageGallery.addEventListener('click', popupImage);
-  imageGallery.setAttribute("src", link);
-  initialCard.appendChild(imageGallery);
-  imageGallery.setAttribute("alt", name);
-
-
-  const wrapperNameMoreButton = createTagWithClass('div', 'gallery__wrapper-text-and-like-button');
-  initialCard.appendChild(wrapperNameMoreButton);
-
-  const imageName = createTagWithClass('p', 'gallery__card-name');
-  wrapperNameMoreButton.appendChild(imageName);
-  imageName.innerText = name;
-
-  const likeButton = createTagWithClass('button', 'gallery__like-button');
-  wrapperNameMoreButton.appendChild(likeButton);
-  likeButton.addEventListener("click", liked);
-
-}
-
 function makeCards() {
   initialCards.forEach((element) => {
-    renderCard(element.name, element.link);
+   const card = new Card(element.name, element.link);
+   const generateNewCard = card.renderCard();
+   galleryCard.append(generateNewCard);
   });
 };
 
@@ -158,7 +91,9 @@ function newCard(event) {
   event.preventDefault();
   const inputName = document.querySelector("#input-location-name");
   const inputLink = document.querySelector("#input-image");
-  renderCard(inputName.value, inputLink.value);
+  const card = new Card(inputName.value, inputLink.value);
+  const newCard =  card.renderCard();
+  galleryCard.prepend(newCard);
   closeMore();
 }
 
@@ -197,3 +132,25 @@ expandedImage.addEventListener("click", (event) => {
     expandedImage.classList.remove("popup_opened");
   }
 });
+
+
+
+const formEditProfile = new EnableValidation(
+  {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    buttonSelector: '.popup__save-button',
+    errorSelector: '.popup__form-error',
+  }
+)
+
+formEditProfile.validation();
+
+const formImages = new EnableValidation({
+  formSelector: '.popup-add-card-form',
+  inputSelector: '.popup__input',
+  buttonSelector: '.popup__save-button',
+  errorSelector: '.popup__form-error',
+})
+
+formImages.validation();
