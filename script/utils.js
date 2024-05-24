@@ -1,34 +1,48 @@
+
 function openPopUp() {
   const popUp = document.querySelector('.popup');
   popUp.classList.add('popup_opened');
-  handleButtonPerfil()
+  document.addEventListener("keydown", escapeClose);
 }
 
 function closePopUp() {
   const popUp = document.querySelector('.popup');
   popUp.classList.remove('popup_opened');
+  document.removeEventListener("keydown", escapeClose);
 }
 
 function openMore() {
-  let popUp = document.querySelectorAll('.popup')[1];
+  const popUp = document.querySelectorAll('.popup')[1];
   popUp.classList.add('popup_opened');
-  handleButton()
+  document.addEventListener("keydown", escapeClose);
 }
 
 function closeMore() {
-  let popUp = document.querySelectorAll('.popup')[1];
+  const popUp = document.querySelectorAll('.popup')[1];
   popUp.classList.remove('popup_opened');
 }
 
 function openExpandedImage() {
-  let popUp = document.querySelectorAll('.popup')[2];
+  const popUp = document.querySelectorAll('.popup')[2];
   popUp.classList.add('popup_opened');
+  document.addEventListener("keydown", escapeClose);
 }
 
 function closeExpandedImage() {
-  let popUp = document.querySelectorAll('.popup')[2];
+  const popUp = document.querySelectorAll('.popup')[2];
   popUp.classList.remove('popup_opened');
+  document.removeEventListener("keydown", escapeClose);
 }
+
+function escapeClose(event) {
+  if (event.key === "Escape") {
+    closePopUp()
+    closeExpandedImage()
+    closeMore()
+  }
+};
+
+
 
 export {
   openPopUp,
@@ -38,3 +52,4 @@ export {
   openExpandedImage,
   closeExpandedImage
 }
+

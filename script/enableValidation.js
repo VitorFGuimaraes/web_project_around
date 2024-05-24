@@ -1,4 +1,4 @@
-export default class EnableValidation {
+export default class FormValidation {
   constructor(params) {
     this._form = document.querySelector(params.formSelector);
     this._inputs = this._form.querySelectorAll(params.inputSelector);
@@ -14,7 +14,7 @@ export default class EnableValidation {
     }
   }
 
-  validation() {
+  enableValidation() {
     this._inputs.forEach((i) => {
       i.addEventListener('input', (e) => {
         const error = Array.from(this._errorClass).find((error) => error.id === `${i.id}-error`);

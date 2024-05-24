@@ -26,8 +26,6 @@ export default class Card {
 
   renderCard() {
     const initialCard = this._createTagWithClass('div', "gallery__card");
-/*     galleryCard.appendChild(initialCard);
- */
     const deleteButton = this._createTagWithClass('button', "gallery__delete-button");
     initialCard.appendChild(deleteButton);
     deleteButton.addEventListener("click", this._deleteCard);

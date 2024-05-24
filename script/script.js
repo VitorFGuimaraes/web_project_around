@@ -11,27 +11,27 @@ import {
 import EnableValidation from "../script/enableValidation.js";
 
 const editButton = document.querySelector('.profile__edit-button');
-const closeButton = document.querySelectorAll('.popup__close-button');
+const closeProfile = document.querySelector('#close-profile');
+const closeAddCard = document.querySelector('#close-add-card');
 const buttonMore = document.querySelector('.profile__button-more');
 const galleryCard = document.querySelector(".gallery");
 const popUpCloseButton = document.querySelector(".popup-view-image__close-button")
 
 
-
 buttonMore.addEventListener('click', openMore);
 editButton.addEventListener('click', openPopUp);
-closeButton[0].addEventListener('click', closePopUp);
-closeButton[1].addEventListener('click', closeMore);
+closeProfile.addEventListener('click', closePopUp);
+closeAddCard.addEventListener('click', closeMore);
 popUpCloseButton.addEventListener('click', popUpCloseButton);
 
-let formElement = document.querySelector('.popup__form');
+const formElement = document.querySelector('.popup__form');
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    let nameInput = document.querySelector('#input-name');
-    let jobInput = document.querySelector('#input-role');
-    let profileName = document.querySelector('.profile__name');
-    let profileRole = document.querySelector('.profile__role');
+    const nameInput = document.querySelector('#input-name');
+    const jobInput = document.querySelector('#input-role');
+    const profileName = document.querySelector('.profile__name');
+    const profileRole = document.querySelector('.profile__role');
     profileName.textContent = nameInput.value;
     profileRole.textContent = jobInput.value;
     closePopUp();
@@ -101,19 +101,11 @@ handleImageForm.addEventListener("submit", newCard);
 popUpCloseButton.addEventListener('click', closeExpandedImage);
 
 
-function escapeClose(event) {
-  if (event.key === "Escape") {
-    closePopUp()
-    closeExpandedImage()
-    closeMore()
-  }
-};
 
-document.addEventListener("keydown", escapeClose);
 
-let popUp = document.querySelector('.popup');
-let addCard = document.querySelectorAll('.popup')[1];
-let expandedImage = document.querySelectorAll(".popup")[2];
+const popUp = document.querySelector('.popup');
+const addCard = document.querySelector('.popup-add-card');
+const expandedImage = document.querySelector(".popup-view-image");
 
 popUp.addEventListener("click", (event) => {
 if (event.target.classList.contains("popup")) {
@@ -144,7 +136,7 @@ const formEditProfile = new EnableValidation(
   }
 )
 
-formEditProfile.validation();
+formEditProfile.enableValidation();
 
 const formImages = new EnableValidation({
   formSelector: '.popup-add-card-form',
@@ -153,4 +145,4 @@ const formImages = new EnableValidation({
   errorSelector: '.popup__form-error',
 })
 
-formImages.validation();
+formImages.enableValidation();
