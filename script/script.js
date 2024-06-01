@@ -1,14 +1,18 @@
 import  Card  from "./card.js";
-import {
+/* import {
   openPopUp,
   closePopUp,
   openMore,
   closeMore,
   openExpandedImage,
   closeExpandedImage
-} from "./utils.js";
-
+} from "./utils.js"; */
+import Popup from "./popup.js";
+import PopupWithImage  from "./popupWithImage.js";
+import PopupWithForm  from "./popupWithForm.js";
+import Section from "./Section.js";
 import EnableValidation from "../script/enableValidation.js";
+import UserInfo from "./userinfo.js";
 
 const editButton = document.querySelector('.profile__edit-button');
 const closeProfile = document.querySelector('#close-profile');
@@ -18,12 +22,12 @@ const galleryCard = document.querySelector(".gallery");
 const popUpCloseButton = document.querySelector(".popup-view-image__close-button")
 
 
-buttonMore.addEventListener('click', openMore);
+/* buttonMore.addEventListener('click', openMore);
 editButton.addEventListener('click', openPopUp);
 closeProfile.addEventListener('click', closePopUp);
-closeAddCard.addEventListener('click', closeMore);
-popUpCloseButton.addEventListener('click', popUpCloseButton);
-
+closeAddCard.addEventListener('click', closeMore); */
+/* popUpCloseButton.addEventListener('click', popUpCloseButton);
+ */
 const formElement = document.querySelector('.popup__form');
 
 function handleProfileFormSubmit(evt) {
@@ -67,15 +71,15 @@ const initialCards = [
 ];
 
 
-
+/*
 export function popupImage(event) {
   const expandedImage = document.querySelector('.popup-view-image__render-image');
   expandedImage.setAttribute('src', event.target.getAttribute('src'));
   expandedImage.setAttribute('alt', event.target.getAttribute('alt'));
   openExpandedImage();
-}
+} */
 
-function makeCards() {
+/* function makeCards() {
   initialCards.forEach((element) => {
    const card = new Card(element.name, element.link);
    const generateNewCard = card.renderCard();
@@ -97,13 +101,13 @@ function newCard(event) {
   closeMore();
 }
 
-handleImageForm.addEventListener("submit", newCard);
-popUpCloseButton.addEventListener('click', closeExpandedImage);
+handleImageForm.addEventListener("submit", newCard); */
+/* popUpCloseButton.addEventListener('click', closeExpandedImage);
+ */
 
 
 
-
-const popUp = document.querySelector('.popup');
+/* const popUp = document.querySelector('.popup');
 const addCard = document.querySelector('.popup-add-card');
 const expandedImage = document.querySelector(".popup-view-image");
 
@@ -123,7 +127,7 @@ expandedImage.addEventListener("click", (event) => {
   if (event.target.classList.contains("popup-view-image")) {
     expandedImage.classList.remove("popup_opened");
   }
-});
+}); */
 
 
 
@@ -146,3 +150,50 @@ const formImages = new EnableValidation({
 })
 
 formImages.enableValidation();
+
+const popupWithImage = new PopupWithImage(".popup-view-image");
+popupWithImage.setEventListener();
+
+const gallery = new Section({
+  items: initialCards,
+  renderer: (image) => {
+    const card = new Card(image, ({name, link}) => {
+      popupWithImage.open(link, name)
+    })
+    const cardBuilded = card.renderCard();
+    gallery.addItem(cardBuilded);
+  }
+}, ".gallery");
+
+gallery.renderItems();
+
+const userInfo = new UserInfo({ selectorName: ".profile__name", selectorRole: ".profile__role"});
+
+const popupEditProfile = new PopupWithForm(".popup", ([name, role]) => {
+  userInfo.setUserInfo(name, role);
+});
+
+popupEditProfile.setEventListener();
+
+const openEditProfileButton = document.querySelector('.profile__edit-button');
+
+openEditProfileButton.addEventListener('click', () => {
+  popupEditProfile.open();
+});
+
+const popupAddCard = new PopupWithForm(".popup-add-card", ([cardName, cardLink]) => {
+  const image = {name: cardName, link: cardLink};
+  const newCard = new Card(image, ({ name, link}) => {
+    popupWithImage.open(link, name)
+  });
+  const newCardBuilded = newCard.renderCard();
+  gallery.addItem(newCardBuilded);
+  }
+);
+
+popupAddCard.setEventListener();
+
+const openAddCardButton = document.querySelector('.profile__button-more');
+openAddCardButton.addEventListener('click', () => {
+  popupAddCard.open();
+});

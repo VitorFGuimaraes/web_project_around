@@ -1,5 +1,5 @@
 
-function openPopUp() {
+/* function openPopUp() {
   const popUp = document.querySelector('.popup');
   popUp.classList.add('popup_opened');
   document.addEventListener("keydown", escapeClose);
@@ -42,9 +42,9 @@ function escapeClose(event) {
   }
 };
 
+ */
 
-
-export {
+/* export {
   openPopUp,
   closePopUp,
   openMore,
@@ -52,4 +52,4 @@ export {
   openExpandedImage,
   closeExpandedImage
 }
-
+ */

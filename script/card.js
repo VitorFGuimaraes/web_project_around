@@ -1,9 +1,10 @@
-import { popupImage } from "./script.js";
-
+/* import { popupImage } from "./script.js";
+ */
 export default class Card {
-  constructor(name, link) {
+  constructor({ name, link }, handleCardClick) {
     this._name = name;
     this._link = link;
+    this._handleCardClick = handleCardClick;
   }
 
   _createTagWithClass(tag, className) {
@@ -34,10 +35,12 @@ export default class Card {
     deleteButton.appendChild(deleteImageButton);
 
     const imageGallery = this._createTagWithClass('img', 'gallery__card-image');
-    imageGallery.addEventListener('click', popupImage);
     imageGallery.setAttribute("src", this._link);
     initialCard.appendChild(imageGallery);
     imageGallery.setAttribute("alt", this._name);
+    imageGallery.addEventListener('click', () => {
+      this._handleCardClick({link: this._link , name: this._name});
+    });
 
 
     const wrapperNameMoreButton = this._createTagWithClass('div', 'gallery__wrapper-text-and-like-button');
