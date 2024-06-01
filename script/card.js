@@ -1,5 +1,3 @@
-/* import { popupImage } from "./script.js";
- */
 export default class Card {
   constructor({ name, link }, handleCardClick) {
     this._name = name;
