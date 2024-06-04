@@ -30,27 +30,27 @@ formElement.addEventListener('submit', handleProfileFormSubmit);
 const initialCards = [
   {
     name: "Serra da Estrela - PT",
-    link: "../images/Serra-da-Estrela.jpg"
+    link: "./images/Serra-da-Estrela.jpg"
   },
   {
     name: "Gerês - PT",
-    link: "../images/Gerês.jpg"
+    link: "./images/Gerês.jpg"
   },
   {
     name: "Nazaré - PT",
-    link: "../images/Nazaré.jpg"
+    link: "./images/Nazaré.jpg"
   },
   {
     name: "Santos - SP",
-    link: "../images/Santos.jpg"
+    link: "./images/Santos.jpg"
   },
   {
     name: "Porto - PT",
-    link: "../images/porto.jpg"
+    link: "./images/porto.jpg"
   },
   {
     name: "Gaia - PT",
-    link: "../images/familia.jpg"
+    link: "./images/familia.jpg"
   }
 ];
 
