@@ -1,9 +1,10 @@
+import "./styles/index.css"
 import  Card  from "./card.js";
 import Popup from "./popup.js";
 import PopupWithImage  from "./popupWithImage.js";
 import PopupWithForm  from "./popupWithForm.js";
 import Section from "./Section.js";
-import EnableValidation from "../script/enableValidation.js";
+import EnableValidation from "./enableValidation.js"
 import UserInfo from "./userinfo.js";
 const editButton = document.querySelector('.profile__edit-button');
 const closeProfile = document.querySelector('#close-profile');

@@ -6,7 +6,6 @@
     <meta name="keywords" content="travel, exploration, europa, portugal, snow">
     <meta name="author" content="Vitor Ferreira Guimarães">
     <meta name="description" content="places around the world">
-    <link rel="stylesheet" href="pages/index.css">
     <title>Web Project Around</title>
 </head>
 <body>
@@ -19,20 +18,20 @@
   </header>
   <main class="main">
     <section class="profile">
-      <img class="profile__image-profile" src="images/meu_perfil.jpg" alt="imagem de um rapaz com cabelo cacheado e gorro de natal">
+      <img class="profile__image-profile" src="<%=require('./images/meu_perfil.jpg')%>" alt="imagem de um rapaz com cabelo cacheado e gorro de natal">
       <div class="profile__wrapper-texts">
         <div class="profile__wrapper-name-and-edit-button">
         <h2 class="profile__name">Vitor Ferreira Guimarães
         </h2>
         <button class="profile__edit-button">
-          <img class="profile__image-button" src="images/images.png" alt="imagem do icone de editar">
+          <img class="profile__image-button" src="<%=require('./images/images.png')%>" alt="imagem do icone de editar">
         </button>
       </div>
         <h2 class="profile__role">Explorador
         </h2>
       </div>
       <button class="profile__button-more">
-        <img class="profile__button-more-image" src="images/add.png" alt="imagem do ícone de adicionar">
+        <img class="profile__button-more-image" src="<%=require('./images/add.png')%>" alt="imagem do ícone de adicionar">
       </button>
     </section>
     <section class="gallery">
@@ -43,7 +42,7 @@
   </footer>
   <div class="popup">
     <div class="popup__container">
-      <img class="popup__close-button" id="close-profile" src="images/close-icon.png" alt="aonde se fecha a imagem">
+      <img class="popup__close-button" id="close-profile" src=".<%=require('./images/close-icon.png')%>" alt="aonde se fecha a imagem">
       <h2 class="popup__title">
         Editar perfil
       </h2>
@@ -58,7 +57,7 @@
   </div>
   <div class="popup popup-add-card">
     <div class="popup__container">
-      <img class="popup__close-button popup-add-card__close-button" id="close-add-card" src="images/close-icon.png" alt="aonde se fecha a imagem">
+      <img class="popup__close-button popup-add-card__close-button" id="close-add-card" src="<%=require('./images/close-icon.png')%>" alt="aonde se fecha a imagem">
       <h2 class="popup__title">Novo local</h2>
       <form class="popup__form popup-add-card-form">
         <input class="popup__input" id="input-location-name" placeholder="Titulo" type="text" minlength="2" maxlength="30" required>
@@ -71,11 +70,10 @@
   </div>
   <div class="popup popup-view-image">
     <div class="popup__container popup-view-image__image-container">
-      <img class="popup__close-button popup-view-image__close-button" src="images/close-icon.png" alt="aonde se fecha a imagem">
+      <img class="popup__close-button popup-view-image__close-button" src="<%=require('./images/close-icon.png')%>" alt="aonde se fecha a imagem">
       <img class="popup-view-image__render-image" src="#" alt="#">
     </div>
   </div>
 </div>
-  <script type="module" src="./script/script.js"></script>
 </body>
 </html>
