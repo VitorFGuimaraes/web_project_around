@@ -1,18 +1,18 @@
 import "./styles/index.css"
+import serraDaEstrela from "./images/Serra-da-Estrela.jpg";
+import geres from "./images/Gerês.jpg";
+import nazare from "./images/Nazaré.jpg";
+import santos from "./images/Santos.jpg";
+import porto from "./images/porto.jpg";
+import gaia from "./images/familia.jpg";
 import  Card  from "./card.js";
-import Popup from "./popup.js";
 import PopupWithImage  from "./popupWithImage.js";
 import PopupWithForm  from "./popupWithForm.js";
 import Section from "./Section.js";
 import EnableValidation from "./enableValidation.js"
 import UserInfo from "./userinfo.js";
-const editButton = document.querySelector('.profile__edit-button');
-const closeProfile = document.querySelector('#close-profile');
-const closeAddCard = document.querySelector('#close-add-card');
-const buttonMore = document.querySelector('.profile__button-more');
-const galleryCard = document.querySelector(".gallery");
-const popUpCloseButton = document.querySelector(".popup-view-image__close-button")
 const formElement = document.querySelector('.popup__form');
+
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
@@ -30,27 +30,27 @@ formElement.addEventListener('submit', handleProfileFormSubmit);
 const initialCards = [
   {
     name: "Serra da Estrela - PT",
-    link: "./images/Serra-da-Estrela.jpg"
+    link: serraDaEstrela
   },
   {
     name: "Gerês - PT",
-    link: "./images/Gerês.jpg"
+    link: geres
   },
   {
     name: "Nazaré - PT",
-    link: "./images/Nazaré.jpg"
+    link: nazare
   },
   {
     name: "Santos - SP",
-    link: "./images/Santos.jpg"
+    link: santos
   },
   {
     name: "Porto - PT",
-    link: "./images/porto.jpg"
+    link: porto
   },
   {
     name: "Gaia - PT",
-    link: "./images/familia.jpg"
+    link: gaia
   }
 ];
 
