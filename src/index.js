@@ -11,6 +11,8 @@ import PopupWithForm  from "./popupWithForm.js";
 import Section from "./Section.js";
 import EnableValidation from "./enableValidation.js"
 import UserInfo from "./userinfo.js";
+import Api from "./api.js";
+import PopupWithConfirmation  from "./popupWithConfirmation.js";
 const formElement = document.querySelector('.popup__form');
 
 
@@ -27,7 +29,7 @@ function handleProfileFormSubmit(evt) {
 
 formElement.addEventListener('submit', handleProfileFormSubmit);
 
-const initialCards = [
+/*const initialCards = [
   {
     name: "Serra da Estrela - PT",
     link: serraDaEstrela
@@ -52,7 +54,32 @@ const initialCards = [
     name: "Gaia - PT",
     link: gaia
   }
-];
+];*/
+
+const api = new Api({ baseUrl: "https://around.nomoreparties.co/v1/web-ptbr-cohort-11", headers: {
+  authorization: "2a05ef84-2eeb-4d8e-80db-d6a6d17ec053",
+  "Content-Type": "application/json"
+} });
+
+const initialCards = api.getInitialCards();
+initialCards.then((data) => {
+  const gallery = new Section({
+    items: data,
+    renderer: (image) => {
+      const card = new Card(image, ({name, link}) => {
+        popupWithImage.open(link, name)
+      }, (event) => {
+        popupWithConfirmation.open(event)
+      })
+      const cardBuilded = card.renderCard();
+      gallery.addItem(cardBuilded);
+    }
+  }, ".gallery");
+  gallery.renderItems();
+});
+
+
+
 
 const formEditProfile = new EnableValidation(
   {
@@ -77,19 +104,26 @@ formImages.enableValidation();
 const popupWithImage = new PopupWithImage(".popup-view-image");
 popupWithImage.setEventListener();
 
-const gallery = new Section({
+const popupWithConfirmation = new PopupWithConfirmation(".popup-confirmation-delete");
+popupWithConfirmation.setEventListener();
+
+
+
+/* const gallery = new Section({
   items: initialCards,
   renderer: (image) => {
     const card = new Card(image, ({name, link}) => {
       popupWithImage.open(link, name)
+    }, (event) => {
+      popupWithConfirmation.open(event)
     })
     const cardBuilded = card.renderCard();
     gallery.addItem(cardBuilded);
   }
-}, ".gallery");
+}, ".gallery"); */
 
-gallery.renderItems();
-
+/* gallery.renderItems();
+ */
 const userInfo = new UserInfo({ selectorName: ".profile__name", selectorRole: ".profile__role"});
 
 const popupEditProfile = new PopupWithForm(".popup", ([name, role]) => {

@@ -1,8 +1,9 @@
 export default class Card {
-  constructor({ name, link }, handleCardClick) {
+  constructor({ name, link }, handleCardClick, handleDelete) {
     this._name = name;
     this._link = link;
     this._handleCardClick = handleCardClick;
+    this._handleDelete = handleDelete;
   }
 
   _createTagWithClass(tag, className) {
@@ -11,9 +12,7 @@ export default class Card {
     return element;
   }
 
-  _deleteCard(event) {
-    event.target.parentNode.parentNode.remove();
-  }
+
 
   _liked(event) {
     if (event.target.classList.contains("gallery__like-image_black")) {
@@ -27,7 +26,7 @@ export default class Card {
     const initialCard = this._createTagWithClass('div', "gallery__card");
     const deleteButton = this._createTagWithClass('button', "gallery__delete-button");
     initialCard.appendChild(deleteButton);
-    deleteButton.addEventListener("click", this._deleteCard);
+    deleteButton.addEventListener("click", this._handleDelete);
 
     const deleteImageButton = this._createTagWithClass('img', "gallery__delete-image");
     deleteButton.appendChild(deleteImageButton);

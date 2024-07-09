@@ -74,6 +74,40 @@
       <img class="popup-view-image__render-image" src="#" alt="#">
     </div>
   </div>
+  <div class="popup popup-confirmation-delete">
+    <div class="popup__container">
+      <img class="popup__close-button" src="<%=require('./images/close-icon.png')%>" alt="aonde se fecha a imagem">
+      <h2 class="popup__title">Tem Certeza?</h2>
+      <button class="popup__save-button popup-confirmation-button" id="delete-button" type="button" >Sim</button>
+    </div>
+  </div>
+  <div class="popup popup-edit">
+    <div class="popup__container"   id="editAvatarPopup">
+      <button type="button" class="popup__close-icon">
+        <img
+          class="popup__close-icon-img popup__close"
+          src="<%=require('./images/close-icon.png')%>"
+          alt="ìcone para fechar o pop-up"
+        />
+      </button>
+      <form class="popup__form popup__form_edit" novalidate>
+        <fieldset class="popup__set">
+          <h2 class="popup__title">Alterar a foto do perfil</h2>
+          <label>
+            <input
+              id="avatar-input"
+              placeholder="Link da Imagem"
+              type="url"
+              class="popup__form-input popup__form-input_avatar"
+              name="image" required
+            />
+            <span class="avatar-input-error"></span>
+          </label>
+          <button type="submit" class="popup__button-submit">Salvar</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
 </div>
 </body>
 </html>
