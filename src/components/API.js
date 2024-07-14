@@ -70,7 +70,7 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-
+  
   addLikes(cardId) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "PUT",
@@ -111,3 +111,4 @@ export default class Api {
     });
   }
 }
+  
